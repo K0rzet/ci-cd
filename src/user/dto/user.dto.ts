@@ -1,5 +1,6 @@
 import { IsBoolean, IsNotEmpty, IsOptional, IsString } from 'class-validator'
 import { ApiProperty } from '@nestjs/swagger'
+import { UserRole } from '@prisma/client'
 
 export class CreateUserDto {
 	@ApiProperty()
@@ -24,10 +25,11 @@ export class CreateUserDto {
 	@IsString()
 	@IsOptional()
 	inviterRefCode?: string
-
+	
 	@ApiProperty()
 	@IsString()
-	refCode: string
+	@IsOptional()
+	refCode?: string
 }
 
 export class VerifyUserDto {
@@ -57,3 +59,8 @@ export class GetUserDataDto {
 	@IsNotEmpty()
 	userId: string
 }
+
+export class UpdateUserRoleDto {
+	@ApiProperty({ enum: UserRole })
+	role: UserRole;
+  }
