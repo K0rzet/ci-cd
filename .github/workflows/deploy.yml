@@ -62,15 +62,7 @@ jobs:
 
       - name: Build project
         run: yarn run build
-
-      - name: Start SSH agent
-        uses: webfactory/ssh-agent@v0.5.4
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Check SSH key
-        run: ssh-add -L
-
+        
       - name: Deploy to server
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
