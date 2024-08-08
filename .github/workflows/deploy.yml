@@ -77,4 +77,4 @@ jobs:
           SERVER_HOST: ${{ secrets.SERVER_HOST }}
           SERVER_PATH: ${{ secrets.SERVER_PATH }}
         run: |
-          ssh $SERVER_USER@$SERVER_HOST "cd $SERVER_PATH && git reset --hard origin/main && git pull origin main && yarn install && yarn run build && pm2 restart all"
+          ssh $SERVER_USER@$SERVER_HOST "cd $SERVER_PATH && cat .env && echo "APP_URL=$APP_URL" > .env && echo "BOT_TOKEN=$BOT_TOKEN" >> .env && echo "DATABASE_URL=$DATABASE_URL" >> .env && echo "JWT_SECRET=$JWT_SECRET" >> .env && git reset --hard origin/main && git pull origin main && yarn install && yarn run build && pm2 restart all"
