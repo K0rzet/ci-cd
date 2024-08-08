@@ -50,6 +50,7 @@ jobs:
           echo 'BOT_TOKEN="${{ secrets.BOT_TOKEN }}"' >> .env
           echo 'DATABASE_URL="${{ secrets.DATABASE_URL }}"' >> .env
           echo 'JWT_SECRET="${{ secrets.JWT_SECRET }}"' >> .env
+          cat .env
 
       - name: Run Prisma migrations
         run: npx prisma migrate dev --preview-feature
