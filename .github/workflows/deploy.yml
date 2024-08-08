@@ -76,4 +76,4 @@ jobs:
           SERVER_HOST: ${{ secrets.SERVER_HOST }}
           SERVER_PATH: ${{ secrets.SERVER_PATH }}
         run: |
-          ssh $SERVER_USER@$SERVER_HOST "cd $SERVER_PATH && git pull origin main && yarn install && yarn run build && pm2 restart all"
+          ssh $SERVER_USER@$SERVER_HOST "cd $SERVER_PATH && git pull origin main && git reset --hard origin/main && yarn install && yarn run build && pm2 restart all"
